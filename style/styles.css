@@ -60,3 +60,44 @@ h2 {
 .bold {
     font-weight: var(--bold);
 }
+
+.product-img {
+    border-radius: 16px;
+}
+
+.card-header {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.btn-default {
+    background-color: white;
+    padding: 14px 18px;
+    border: 1px solid gray;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: -7%;
+    left: 50%;
+    transform: translateX(-55%);
+    text-wrap: nowrap;
+}
+
+.category {
+    color: gray;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.product-name {
+    font-weight: var(--bold);
+    margin: 6px 0;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: var(--bold);
+    color: var(--red);
+}
