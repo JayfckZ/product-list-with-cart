@@ -1,0 +1,62 @@
+@import url('./vars.css');
+@import url('./fonts.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'RedHatText', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--rose-50);
+}
+
+.container {
+    max-width: var(--desktop);
+    width: 100%;
+    margin: 0 auto;
+    padding: 75px 0;
+    display: flex;
+}
+
+main {
+    max-width: 70%;
+    width: 100%;
+}
+
+aside {
+    max-width: 25%;
+    width: 100%;
+    margin-left: 5%;
+
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 32px;
+}
+
+h2 {
+    font-size: 32px;
+    color: var(--red);
+    margin-bottom: 32px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.semi {
+    font-weight: var(--semi-bold);
+}
+
+.bold {
+    font-weight: var(--bold);
+}
