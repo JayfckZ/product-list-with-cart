@@ -15,6 +15,7 @@
 .DS_Store
 .prettierignore
 
-*.md
+README-template.md
+README.md
 design/
 preview.jpg

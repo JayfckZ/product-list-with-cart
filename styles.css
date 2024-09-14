@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'RedHatText', sans-serif;
+}
+
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 75px 0;
+}
+
+@font-face {
+    font-family: 'RedHatText';
+    src: url('./assets/fonts/static/RedHatText-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'RedHatText';
+    src: url('./assets/fonts/static/RedHatText-SemiBold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'RedHatText';
+    src: url('./assets/fonts/static/RedHatText-Bold.ttf');
+    font-weight: 700;
+}
