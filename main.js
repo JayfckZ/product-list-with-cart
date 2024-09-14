@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <img class="product-img" src="${product.image.desktop}" alt="" width="300px">
                         <button class="btn-default"><img src="./assets/images/icon-add-to-cart.svg">Adicionar ao carrinho</button>
                         <span class="btn-count">
-                            <button><img src="./assets/images/icon-decrement-quantity.svg"></button>
-                            <span>0</span>
-                            <button><img src="./assets/images/icon-increment-quantity.svg"></button>
+                            <button class="decrement"><img src="./assets/images/icon-decrement-quantity.svg"></button>
+                            <span class="quantity"></span>
+                            <button class="increment"><img src="./assets/images/icon-increment-quantity.svg"></button>
                         </span>
                     </div>
                     <div class="card-body">
@@ -26,6 +26,39 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <span class="price">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
                     </div>
                 `
+
+                const incrementButton = card.querySelector('.increment')
+                const decrementButton = card.querySelector('.decrement')
+                const quantitySpan = card.querySelector('.quantity')
+                const button = card.querySelector('.btn-default')
+                const buttonCount = card.querySelector('.btn-count')
+                let quantity = 0
+
+                // Troca para o botão de quantidade
+                button.addEventListener('click', () => {
+                    button.style.display = 'none'
+                    buttonCount.style.display = 'flex';
+                    quantity++
+                    quantitySpan.textContent = quantity
+                })
+                
+                // Incrementa
+                incrementButton.addEventListener('click', () => {
+                    quantity++
+                    quantitySpan.textContent = quantity
+                })
+
+                // Decrementa e caso chegue a 0 volta para o estado inicial
+                decrementButton.addEventListener('click', () => {
+                    if (quantity > 0) {
+                        quantity--;
+                        quantitySpan.textContent = quantity;
+                    } 
+                    if (quantity === 0) {
+                        buttonCount.style.display = 'none';
+                        button.style.display = 'block'
+                    }
+                })
 
                 productsList[0].appendChild(card)
             })
@@ -36,20 +69,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     
     await loadProducts()
-    
-    const buttons = Array.from(document.getElementsByClassName('btn-default'))
-    const buttonsCount = Array.from(document.getElementsByClassName('btn-count'))
-    window.buttons = buttons
-    window.buttonsCount = buttonsCount
-
-    buttons.forEach((button, i) => {
-        button.addEventListener('click', () => {
-            button.style.display = 'none'
-
-            if (buttonsCount[i]) {
-                buttonsCount[i].style.display = 'flex';
-            }
-        })
-    })
-
 })
