@@ -30,10 +30,23 @@ aside {
     max-width: 25%;
     width: 100%;
     margin-left: 5%;
+    min-height: auto;
+    height: min-content;
 
     background-color: white;
     border-radius: 12px;
     padding: 16px;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty p {
+    color: var(--rose-500);
 }
 
 h1 {
@@ -75,6 +88,7 @@ h2 {
     padding: 14px 18px;
     border: 1px solid gray;
     border-radius: 32px;
+    width: 210px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -83,6 +97,42 @@ h2 {
     left: 50%;
     transform: translateX(-55%);
     text-wrap: nowrap;
+    transition: all ease 0.3s;
+}
+
+.btn-default:hover {
+    filter: brightness(0.9);
+    transition: all ease 0.3s;
+}
+
+.btn-count {
+    background-color: var(--red);
+    color: white;
+    padding: 8px 18px;
+    border: 1px solid gray;
+    border-radius: 32px;
+    width: 210px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -7%;
+    left: 50%;
+    transform: translateX(-55%);
+    text-wrap: nowrap;
+    transition: all ease 0.3s;
+}
+
+.btn-count button {
+    background-color: transparent;
+    border: 1px solid white;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .category {
