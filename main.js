@@ -33,11 +33,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 `
             
+            // Remove o item por completo do carrinho
             productsList.querySelectorAll('.remove-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const index = btn.getAttribute('data-index')
-                    removeToCart({product: cart[index].product, quantity: 0})
-            })
+
+                    // Procura pelos card um que o nome corresponda
+                    document.querySelectorAll('.card').forEach(card => {
+                        if (card.querySelector('.product-name').textContent == `${cart[index].product.name}`) {
+                            const decrementButton = card.querySelector('.decrement')
+                            let quantity = cart[index].quantity
+        
+                            // Simula o decremento até que a quantidade chegue a zero e volte o botão ao estado inicial
+                            while (quantity > 0) {
+                                decrementButton.click()
+                                quantity--
+                            }
+                        }
+                    })
+                })
             })
         
         } else {
