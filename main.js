@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadCart = () => {
         const empty = document.querySelector('.empty')
         const productsList = document.querySelector('.products-list')
-        console.log(cart)
+        const cartNumber = document.getElementsByTagName('h2')
+
+        cartNumber[0].innerText = `Carrinho (${cart.reduce((total, item) => total + item.quantity, 0)})`
         
         if (cart.length > 0) {
             empty.style.display = 'none'
@@ -37,7 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const removeToCart = (item) => {
-        console.log(item)
         const existingItem = cart.find(cartItem => cartItem.product === item.product)
 
         if (existingItem && item.quantity > 0) {
