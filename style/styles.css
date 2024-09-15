@@ -57,7 +57,6 @@ h1 {
 h2 {
     font-size: 32px;
     color: var(--red);
-    margin-bottom: 32px;
 }
 
 .grid-container {
@@ -142,7 +141,7 @@ h2 {
 }
 
 .product-name {
-    font-weight: var(--bold);
+    font-weight: var(--semi-bold);
     margin: 8px 0;
 }
 
@@ -150,4 +149,63 @@ h2 {
     font-size: 16px;
     font-weight: var(--bold);
     color: var(--red);
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    padding: 24px 0;
+}
+
+li button {
+    background-color: transparent;
+    border: 1px solid var(--rose-300);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.li-values {
+    display: flex;
+    align-items: center;
+}
+
+.li-name {
+    font-weight: var(--semi-bold);
+    margin-bottom: 24px;
+}
+
+.li-quantity {
+    color: var(--red);
+    font-weight: var(--semi-bold);
+}
+
+.li-default-value, .li-total-value {
+    color: var(--rose-300);
+}
+
+.li-default-value {
+    margin: 0 8px;
+}
+
+.li-total-value {
+    font-weight: var(--semi-bold);
+}
+
+.cart-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+}
+
+.total-value{
+    font-weight: var(--bold);
+    font-size: 32px;
 }

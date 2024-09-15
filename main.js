@@ -11,14 +11,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (cart.length > 0) {
             empty.style.display = 'none'
-            const list = cart.map(item => `
-                <div class="cart-item">
-                    <span class="product-name">${item.product.name}</span>
-                    <span class="quantity">Quantidade: ${item.quantity}</span>
+            const list = '<div class="cart-item"><ul>' + cart.map((item, index) => `
+                        <li>
+                            <div>
+                            <p class="li-name">${item.product.name}</p>
+                            <div class="li-values">
+                                <p class="li-quantity">${item.quantity}x</p>
+                                <p class="li-default-value">R$ ${item.product.price.toFixed(2).replace('.', ',')}</p>
+                                <p class="li-total-value">R$ ${(item.product.price * Number(item.quantity)).toFixed(2).replace('.', ',')}</p>
+                            </div>
+                            </div>
+                            <button class="remove-btn" data-index="${index}"><img src="./assets/images/icon-remove-item.svg"></button>
+                        </li>
+            `).join('') + '</ul></div>'
+            
+            
+            productsList.innerHTML = list + `
+            <div class="cart-value">
+            <p>Total do pedido</p>
+            <p class="total-value">R$ ${cart.reduce((total, item) => total + (item.product.price * Number(item.quantity)), 0).toFixed(2).replace('.', ',')}</p>
                 </div>
-            `).join('')
-
-            productsList.innerHTML = list
+                `
+            
+            productsList.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = btn.getAttribute('data-index')
+                    removeToCart({product: cart[index].product, quantity: 0})
+            })
+            })
         
         } else {
             productsList.innerHTML = ''
