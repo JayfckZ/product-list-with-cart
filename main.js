@@ -1,10 +1,60 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    let cart = []
+
+    // Carrega e atualiza o carrinho
+    const loadCart = () => {
+        const empty = document.querySelector('.empty')
+        const productsList = document.querySelector('.products-list')
+        console.log(cart)
+        
+        if (cart.length > 0) {
+            empty.style.display = 'none'
+            const list = cart.map(item => `
+                <div class="cart-item">
+                    <span class="product-name">${item.product.name}</span>
+                    <span class="quantity">Quantidade: ${item.quantity}</span>
+                </div>
+            `).join('')
+
+            productsList.innerHTML = list
+        
+        } else {
+            productsList.innerHTML = ''
+            empty.style.display = 'flex'
+        }
+    }
+
+    const addToCart = (item) => {
+        const existingItem = cart.find(cartItem => cartItem.product === item.product)
+
+        if (existingItem && item.quantity > 0) {
+            existingItem.quantity = item.quantity
+        } else {
+            cart.push(item)
+        }
+        
+        loadCart()
+    }
+
+    const removeToCart = (item) => {
+        console.log(item)
+        const existingItem = cart.find(cartItem => cartItem.product === item.product)
+
+        if (existingItem && item.quantity > 0) {
+            existingItem.quantity = item.quantity
+        } else {
+            cart = cart.filter(cartItem => cartItem.product !== existingItem.product)
+        }
+        
+        loadCart()
+    }
+
     const loadProducts = async () => {
         try {
             const response = await fetch('data.json')
             const data = await response.json()
 
-            const productsList = document.getElementsByClassName('grid-container')
+            const productsList = document.querySelector('.grid-container')
 
             data.forEach(product => {
                 const card = document.createElement('div')
@@ -40,12 +90,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                     buttonCount.style.display = 'flex';
                     quantity++
                     quantitySpan.textContent = quantity
+                    addToCart({
+                        "product": product,
+                        "quantity": quantity
+                    })
                 })
                 
                 // Incrementa
                 incrementButton.addEventListener('click', () => {
                     quantity++
                     quantitySpan.textContent = quantity
+                    addToCart({
+                        "product": product,
+                        "quantity": quantity
+                    })
                 })
 
                 // Decrementa e caso chegue a 0 volta para o estado inicial
@@ -53,14 +111,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                     if (quantity > 0) {
                         quantity--;
                         quantitySpan.textContent = quantity;
+                        removeToCart({
+                            "product": product,
+                            "quantity": quantity
+                        })
                     } 
                     if (quantity === 0) {
-                        buttonCount.style.display = 'none';
+                        buttonCount.style.display = 'none'
                         button.style.display = 'block'
                     }
                 })
 
-                productsList[0].appendChild(card)
+                productsList.appendChild(card)
             })
         } catch (e) {
             console.log('Não foi possível carregar os dados.', e)
