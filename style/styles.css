@@ -298,7 +298,10 @@ body {
     margin-right: 16px;
 }
 
-@media (width <= 375px){
+@media (width <= 525px){
+    h1 {
+        font-size: 36px;
+    }
     .container {
         max-width: var(--desktop);
         width: 80%;
@@ -307,5 +310,17 @@ body {
 
     .layout, .grid-container {
         grid-template-columns: 1fr;
+    }
+
+    .card-header img {
+        width: calc(100vw - 25%);
+    }
+
+    .btn-default, .btn-count {
+        left: 53%;
+    }
+
+    .btn-count img {
+        width: 16px
     }
 }
