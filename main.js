@@ -64,10 +64,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 closeModalBtn.addEventListener('click', () => {
                     modalArea.style.display = 'none'
+                    location.reload(true)
                 })
 
                 modalArea.addEventListener('click', () => {
                     modalArea.style.display = 'none'
+                    location.reload(true)
                 })
 
                 openModalBtn.addEventListener('click', () => {
