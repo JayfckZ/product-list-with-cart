@@ -27,11 +27,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             
             productsList.innerHTML = list + `
-            <div class="cart-value">
-            <p>Total do pedido</p>
-            <p class="total-value">R$ ${cart.reduce((total, item) => total + (item.product.price * Number(item.quantity)), 0).toFixed(2).replace('.', ',')}</p>
+                <div class="cart-value">
+                    <p>Total do pedido</p>
+                    <p class="total-value">R$ ${cart.reduce((total, item) => total + (item.product.price * Number(item.quantity)), 0).toFixed(2).replace('.', ',')}</p>
                 </div>
-                `
+                <div class="carbon">
+                    <img src="./assets/images/icon-carbon-neutral.svg">
+                    <p>Esta é uma entrega <span>sem emissão de carbono</span>.</p>
+                </div>
+                <button class="confirm-button">Confirmar pedido</button>
+            `
             
             // Remove o item por completo do carrinho
             productsList.querySelectorAll('.remove-btn').forEach(btn => {
@@ -52,6 +57,45 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }
                     })
                 })
+
+                const modalArea = document.querySelector('.modal-area')
+                const openModalBtn = document.querySelector('.confirm-button')
+                const closeModalBtn = document.querySelector('.closeBtn')
+
+                closeModalBtn.addEventListener('click', () => {
+                    modalArea.style.display = 'none'
+                })
+
+                modalArea.addEventListener('click', () => {
+                    modalArea.style.display = 'none'
+                })
+
+                openModalBtn.addEventListener('click', () => {
+                    modalArea.style.display = 'flex'
+                })
+
+
+                const modalCart = document.querySelector('.items-values')
+                modalCart.innerHTML = '<ul class="resume">' + cart.map(item => `
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            <img src="${item.product.image.thumbnail}">
+                            <div>
+                                <p class="li-name">${item.product.name}</p>
+                                <div class="li-values">
+                                    <p class="li-quantity">${item.quantity}x</p>
+                                    <p class="li-default-value">R$ ${item.product.price.toFixed(2).replace('.', ',')}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="li-total-value">R$ ${(item.product.price * Number(item.quantity)).toFixed(2).replace('.', ',')}</p>
+                    </li>
+                `).join('') + `</ul>
+                <div class="cart-value">
+                    <p>Total do pedido</p>
+                    <p class="total-value">R$ ${cart.reduce((total, itemAtual) => total + (itemAtual.product.price * Number(itemAtual.quantity)), 0).toFixed(2).replace('.', ',')}</p>
+                </div>
+            `
             })
         
         } else {
