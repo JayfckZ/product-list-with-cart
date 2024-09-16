@@ -23,7 +23,7 @@ body {
 
 .layout {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 36px;
     justify-content: space-between;
 }
