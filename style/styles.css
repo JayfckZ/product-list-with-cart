@@ -18,18 +18,16 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 75px 0;
-    display: flex;
 }
 
-main {
-    max-width: 70%;
-    width: 100%;
+.layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 36px;
+    justify-content: space-between;
 }
 
 aside {
-    max-width: 25%;
-    width: 100%;
-    margin-left: 5%;
     min-height: auto;
     height: min-content;
 
@@ -61,7 +59,8 @@ h2 {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-auto-flow: row; */
     gap: 20px;
 }
 
@@ -297,4 +296,16 @@ body {
 .resume img {
     width: 70px;
     margin-right: 16px;
+}
+
+@media (width <= 375px){
+    .container {
+        max-width: var(--desktop);
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .layout, .grid-container {
+        grid-template-columns: 1fr;
+    }
 }
