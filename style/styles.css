@@ -263,6 +263,8 @@ body {
     border-radius: 16px;
     padding: 16px;
     width:  600px;
+    overflow-y: auto;
+    max-height: 90%;
 }
 
 .modal-title {
