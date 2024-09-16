@@ -18,6 +18,7 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 75px 0;
+    display: grid;
 }
 
 .layout {
@@ -30,6 +31,7 @@ body {
 aside {
     min-height: auto;
     height: min-content;
+    /* min-width: 350px; */
 
     background-color: white;
     border-radius: 12px;
@@ -83,16 +85,16 @@ h2 {
 
 .btn-default {
     background-color: white;
-    padding: 14px 18px;
+    padding: 8px 10px;
     border: 1px solid gray;
     border-radius: 32px;
-    width: 210px;
+    width: 200px;
     display: flex;
     align-items: center;
     cursor: pointer;
     position: absolute;
     bottom: -7%;
-    left: 50%;
+    left: 53%;
     transform: translateX(-55%);
     text-wrap: nowrap;
     transition: all ease 0.3s;
@@ -106,16 +108,16 @@ h2 {
 .btn-count {
     background-color: var(--red);
     color: white;
-    padding: 8px 18px;
+    padding: 8px 10px;
     border: 1px solid gray;
     border-radius: 32px;
-    width: 210px;
+    width: 200px;
     display: none;
     align-items: center;
     justify-content: space-between;
     position: absolute;
     bottom: -7%;
-    left: 50%;
+    left: 53%;
     transform: translateX(-55%);
     text-wrap: nowrap;
     transition: all ease 0.3s;
@@ -124,8 +126,8 @@ h2 {
 .btn-count button {
     background-color: transparent;
     border: 1px solid white;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,7 +316,7 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .card-header img {
+    .card-header > img {
         width: calc(100vw - 25%);
     }
 

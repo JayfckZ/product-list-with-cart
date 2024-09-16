@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 card.innerHTML = `
                     <div class="card-header">
-                        <img class="product-img" src="${product.image.desktop}" alt="" width="300px">
+                        <img class="product-img" src="${product.image.desktop}" alt="" width="225px">
                         <button class="btn-default"><img src="./assets/images/icon-add-to-cart.svg">Adicionar ao carrinho</button>
                         <span class="btn-count">
                             <button class="decrement"><img src="./assets/images/icon-decrement-quantity.svg"></button>
